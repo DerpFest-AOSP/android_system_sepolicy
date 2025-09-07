@@ -1259,7 +1259,7 @@ phony {
     }) + select((
         soong_config_variable("ANDROID", "ASAN_ENABLED"),
         product_variable("selinux_ignore_neverallows"),
-        soong_config_variable("lineage", "disable_treble_sepolicy_tests"),
+        soong_config_variable("lineage_sepolicy", "disable_treble_sepolicy_tests"),
     ), {
         (true, true, default): [
         ],
@@ -1283,7 +1283,7 @@ phony {
         soong_config_variable("ANDROID", "PLATFORM_SEPOLICY_VERSION"),
         soong_config_variable("ANDROID", "ASAN_ENABLED"),
         product_variable("selinux_ignore_neverallows"),
-        soong_config_variable("lineage", "disable_treble_sepolicy_tests"),
+        soong_config_variable("lineage_sepolicy", "disable_treble_sepolicy_tests"),
     ), {
         ("202404", true, true, default): [],
         (default, true, true, default): [],
@@ -1295,7 +1295,7 @@ phony {
         soong_config_variable("ANDROID", "PLATFORM_SEPOLICY_VERSION"),
         soong_config_variable("ANDROID", "ASAN_ENABLED"),
         product_variable("selinux_ignore_neverallows"),
-        soong_config_variable("lineage", "disable_treble_sepolicy_tests"),
+        soong_config_variable("lineage_sepolicy", "disable_treble_sepolicy_tests"),
     ), {
         ("202404", default, default, default): [], // TODO(b/391513934): clean up once we can simplify complex select statements.
         ("202504", true, true, default): [],
