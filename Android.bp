@@ -1242,10 +1242,16 @@ phony {
     }) + select((
         soong_config_variable("ANDROID", "ASAN_ENABLED"),
         product_variable("selinux_ignore_neverallows"),
+        soong_config_variable("lineage_sepolicy", "disable_treble_sepolicy_tests"),
     ), {
-        (true, true): [
+        (true, true, default): [
         ],
-        (default, default): [
+        (default, default, "true"): [
+            "sepolicy_compat_test",
+            "sepolicy_test",
+            "sepolicy_dev_type_test",
+        ],
+        (default, default, default): [
             "sepolicy_compat_test",
             "sepolicy_test",
             "sepolicy_dev_type_test",
@@ -1261,10 +1267,12 @@ phony {
         soong_config_variable("ANDROID", "PLATFORM_SEPOLICY_VERSION"),
         soong_config_variable("ANDROID", "ASAN_ENABLED"),
         product_variable("selinux_ignore_neverallows"),
+        soong_config_variable("lineage_sepolicy", "disable_treble_sepolicy_tests"),
     ), {
-        ("202504", true, true): [],
-        (default, true, true): [],
-        (default, default, default): [
+        ("202504", true, true, default): [],
+        (default, true, true, default): [],
+        (default, default, default, "true"): [],
+        (default, default, default, default): [
             "treble_sepolicy_tests_202504",
         ],
     }) + select(soong_config_variable("ANDROID", "RELEASE_BOARD_API_LEVEL_FROZEN"), {
