@@ -6,6 +6,9 @@
 
 typeattribute system_app coredomain, mlstrustedsubject;
 
+# SystemUI publishes the Monet colors the boot animation reads next boot.
+set_prop(system_app, bootanim_system_prop)
+
 app_domain(system_app)
 net_domain(system_app)
 binder_service(system_app)
